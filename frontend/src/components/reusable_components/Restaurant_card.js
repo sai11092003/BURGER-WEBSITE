@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import initialIngredients from "../../logs/ingredients";
 import Dropdown from './Dropdown';
 import { useDispatch, useSelector } from 'react-redux';
 import { addtocart } from '../../actions/cartAction';
@@ -14,7 +13,7 @@ const RestaurantList = () => {
   const [selectedIngredients, setSelectedIngredients] = useState({});
   const [totalPrice, setTotalPrice] = useState(100);
   const [quantity, setQuantity] = useState(1);
-
+  const {initialIngredients}=useSelector(state=>state.ingredients)
   useEffect(() => {
     if (foundBurger) {
       const initialSelectedIngredients = {};

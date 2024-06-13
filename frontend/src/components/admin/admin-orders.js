@@ -78,10 +78,10 @@ const AdminOrders = () => {
                         <div>
                             Address: {order.shippingAddress ? `${order.shippingAddress.address}, ${order.shippingAddress.city}, ${order.shippingAddress.postalCode}, ${order.shippingAddress.country}` : 'N/A'}
                         </div>
-                        <div>Status: {order.isDelivered ? 'Delivered' : 'Not Delivered'}</div>
+                        <div>Status: {order.isDelivered }</div>
                         <div>Payment Method: {order.paymentMethod || 'N/A'}</div>
                         <div>Order Date: {order.createdAt ? order.createdAt.substring(0, 10) : 'N/A'}</div>
-                        <div>Delivered Date: {order.isDelivered ? (order.deliveredAt ? order.deliveredAt.substring(0, 10) : 'N/A') : 'Not Delivered'}</div>
+                        <div>Delivered Date: {order.isDelivered==='Delivered' ? (order.deliveredAt ? order.deliveredAt.substring(0, 10) : 'N/A') : 'Not Delivered'}</div>
                         <div>Ordered-by: {order.shippingAddress ? order.shippingAddress.name : 'N/A'}</div>
                     </div>
                 </div>

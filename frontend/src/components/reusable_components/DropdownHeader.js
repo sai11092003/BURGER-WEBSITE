@@ -3,7 +3,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-
+import IngredientModal from './IngredientModal';
 function DropdownHeader({ userInfo, handleLogout }) {
   const userName = userInfo ? (userInfo.name.length > 12 ? userInfo.name.slice(0, 12) + '...' : userInfo.name) : 'Account';
   return (

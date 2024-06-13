@@ -18,7 +18,7 @@ app.use('/burgers',require('./routes/burgerroute'))
 app.use('/api/users',require('./routes/userRoute'))
 app.use('/api/order',require('./routes/orderRoute'))
 app.use('/api/admin',require('./routes/adminroutes'))
-
+app.use('/api/ingredients',require('./routes/ingredientsroute'))
 app.use(require('./middleware/Errorhandler'))
 app.listen(8800,()=>{
     console.log('server is running on port 8800');

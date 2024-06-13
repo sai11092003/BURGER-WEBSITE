@@ -1,8 +1,16 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import UserRoleEditor from './admin/UserRoleEditor';
+import { Link, useNavigate } from 'react-router-dom';
 const Profile = () => {
   const user = useSelector(state => state.login.userInfo);
+  const navigate=useNavigate()
+  if(!localStorage.getItem('token'))
+    {
+        navigate('/signin')
+        return <Link to="/signin">sign in to access</Link>
+    }
+
   let role;
   if (user.isAdmin) {
     role = 'Admin';

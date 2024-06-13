@@ -8,7 +8,6 @@ const MyOrders = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.login.userInfo);
     const navigate = useNavigate();
-
     useEffect(() => {
         if (user && user.id && user.token) {
             dispatch(getOrders(user.id, navigate, user.token));
@@ -16,7 +15,10 @@ const MyOrders = () => {
     }, [dispatch, navigate]);
 
     const { loading, orders, error } = useSelector(state => state.orderdetils);
-
+    if(!localStorage.getItem('token'))
+        {
+            return <div>no orders</div>
+        }
     if (loading) {
         return <Spinner/>;
     }
@@ -59,10 +61,10 @@ const MyOrders = () => {
                         <div>
                             Address: {order.shippingAddress.address}, {order.shippingAddress.city}, {order.shippingAddress.postalCode}, {order.shippingAddress.country}
                         </div>
-                        <div>Status: {order.isDelivered ? 'Delivered' : 'Not Delivered'}</div>
+                        <div>Status: {order.isDelivered}</div>
                         <div>Payment Method: {order.paymentMethod}</div>
                         <div>Order Date: {order.createdAt ? order.createdAt.substring(0, 10) : 'N/A'}</div>
-                        <div>Delivered Date: {order.isDelivered ? (order.deliveredAt ? order.deliveredAt.substring(0, 10) : 'N/A') : 'Not Delivered'}</div>
+                        <div>Delivered Date: {order.isDelivered==='Delivered' ? (order.deliveredAt ? order.deliveredAt.substring(0, 10) : 'N/A') : 'Not Delivered'}</div>
                         <div>Ordered-by: {order.shippingAddress.name}</div>
                     </div>
                 </div>

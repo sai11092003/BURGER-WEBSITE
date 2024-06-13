@@ -1,4 +1,4 @@
-const initialIngredients = [
+const initialIngredient = [
     { 
        name:"whole-wheat-bun",price: 20,count:0 },
     {name:"cheese-slice", price: 10,count:0 },
@@ -10,4 +10,4 @@ const initialIngredients = [
     {name:"garlic", price: 20,count:0 },
    { name:"patty",price: 30,count:0 }
    ];
- export default initialIngredients;
+ module.exports= initialIngredient;

@@ -18,6 +18,7 @@ import AdminOrders from './components/admin/admin-orders';
 import CreateBurgerForm from './components/admin/CreateBurgerForm';
 import UpdateBurgerForm from './components/admin/updateBurgerForm';
 import Profile from './components/Profile';
+import ProtectedRoute from './protectedroutes/protectedRoute';
 function App() {
   const {allResults} = useBody();
   return (
@@ -27,18 +28,18 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
          
-          <Route path="/cart/:id?" element={<><Cart/></> } />
+          <Route path="/cart/:id?" element={<ProtectedRoute><Cart/></ProtectedRoute> } />
           <Route path="/signin" element={<PublicRoute><Login /></PublicRoute>} />
           <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
           <Route path="/burger/:id" element={<RestaurantList  />} />
           <Route path="/shipping" element={<><Shipping/></>}/>
           <Route path="/payment" element={<><PaymentScreen/></>}/>
           <Route path="/ordercheck" element={<><OrderReview/></>}/>
-          <Route path="/orders" element={<MyOrders/>}/>
+          <Route path="/orders" element={<ProtectedRoute><MyOrders/></ProtectedRoute>}/>
           <Route path="/admin-orders" element={<><AdminOrders/></>}/>
           <Route path="/addburgers" element={<><CreateBurgerForm/></>}/>
           <Route path="/updateburgers/:id" element={<><UpdateBurgerForm/></>}/>
-          <Route path="/profile" element={<><Profile/></>}/>
+          <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
           <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </main> 

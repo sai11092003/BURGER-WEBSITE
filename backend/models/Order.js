@@ -104,9 +104,10 @@ const orderSchema = new Schema({
         type: Date
     },
     isDelivered: {
-        type: Boolean,
-        required: true,
-        default: false
+        type: String,
+        enum:['Delivered', 'Processing', 'Cancelled','Pending'],
+        required:true,
+        default: 'Pending'
     },
     deliveredAt: {
         type: Date

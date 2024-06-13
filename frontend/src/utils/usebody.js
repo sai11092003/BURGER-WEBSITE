@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { listBurgers } from "../actions/burgerActions";
 import { useNavigate } from "react-router-dom";
-
+import {getingredients} from "../actions/ingredientsAction"
 const useBody = () => {
     const [allResults, setAllResults] = useState([]);
     const [results, setResults] = useState([]);
@@ -15,7 +15,10 @@ const useBody = () => {
     useEffect(() => {
         dispatch(listBurgers(navigate));
     }, [dispatch]);
-
+    
+    useEffect(() => {
+        dispatch(getingredients())
+    }, [dispatch]);
     useEffect(() => {
         if (!loading && !error && burgers) {
             setAllResults(burgers);

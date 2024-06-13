@@ -1,23 +1,24 @@
 const dotenv=require('dotenv')
 dotenv.config()
-const users=require('./logs/Users')
-const burger=require('./logs/Burgers')
 const express=require('express')
 const app=express();
-const Users=require('./models/Users')
-const Order=require('./models/Order')
-const Burgers=require('./models/burgerSchema')
+const initialIngredient=require('../frontend/src/logs/ingredients')
+
+const initialIngredients=require('./models/initialIngredients')
 const connectdb=require('./config/db')
 connectdb();
 const importdata=async()=>{
 try {
-    await Order.deleteMany()
+    /*await Order.deleteMany()
     await Users.deleteMany()
     await Burgers.deleteMany()
     const createdUsers=await Users.insertMany(users)
     const adminUser=createdUsers[0]._id
     const sampleBurgers=burger.map(burger=>({...burger,User:adminUser}))
     await Burgers.insertMany(sampleBurgers)
+    console.log('data imported')*/
+    await initialIngredients.deleteMany()
+    await initialIngredients.insertMany(initialIngredient)
     console.log('data imported')
     process.exit()
 
@@ -27,9 +28,9 @@ try {
 }
 }
 const dataDestroy=async()=>{
-   await Order.deleteMany()
+  /* await Order.deleteMany()
    await Users.deleteMany()
-   await Burgers.deleteMany()
+   await Burgers.deleteMany()*/
    console.log('data destroy')
    process.exit()
    

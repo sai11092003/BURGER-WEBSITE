@@ -11,12 +11,13 @@ const getallOrdersControllers = expressAsyncHandler(async (req, res) => {
  });
  const updateorderControllers = expressAsyncHandler(async (req, res) => {
     const { isDelivered } = req.body;
-
+    console.log(isDelivered)
     try {
         const order = await Order.findById(req.params.id);
         if (order) {
             order.isDelivered = isDelivered;
-            if(order.isDelivered)
+            console.log(order.isDelivered)
+            if(order.isDelivered==='Delivered') 
                 {order.deliveredAt= new Date();}
             const updatedOrder = await order.save();
             res.json(updatedOrder);
