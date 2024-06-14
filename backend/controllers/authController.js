@@ -103,7 +103,6 @@ const profilehandler =asyncHandler( async (req, res) => {
 const getallUsers=asyncHandler(async(req, res)=>{
   try {
     const users = await User.find();
-    console.log(users)
     await exportUserstoExcel(users)
     res.status(200).json(users);
   } catch (error) {
@@ -113,7 +112,7 @@ const getallUsers=asyncHandler(async(req, res)=>{
 })
 const roleUpdateHandler=asyncHandler(async(req, res)=>{
   const { isEmployee } = req.body;
-  console.log(req.body)
+
   try {
     const user = await User.findById(req.params.id);
     if (!user) {
@@ -121,6 +120,8 @@ const roleUpdateHandler=asyncHandler(async(req, res)=>{
     }
     user.isEmployee = isEmployee;
     await user.save();
+    const users= await User.find()
+    await exportUserstoExcel(users)
     res.status(200).json({ message: 'Role updated successfully',user });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });

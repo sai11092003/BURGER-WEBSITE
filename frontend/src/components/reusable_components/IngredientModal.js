@@ -39,7 +39,7 @@ function IngredientModal() {
                 <div className="text-gray-700">Count: {ingredient.count}</div>
               </div>
               <div className="flex flex-col justify-between">
-                <IngredientFormModal title={''} id={ingredient._id} name={ingredient.name} price={ingredient.price} icon={faPencil} />
+                <IngredientFormModal title={'EDIT'} id={ingredient._id} nam={ingredient.name} pric={ingredient.price} icon={faPencil} />
                 <button className="w-full py-2 bg-white text-black border border-white" onClick={(e) => { e.preventDefault(); console.log('clicked'); handleDelete(ingredient._id); }}>
                   <FontAwesomeIcon icon={faTrash} />
                 </button>

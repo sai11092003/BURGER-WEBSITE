@@ -55,7 +55,9 @@ const RestaurantList = () => {
   const handleAddToCart = async () => {
     if (id) {
         console.log(id)
-      await dispatch(addtocart(id, quantity,selectedIngredients,totalPrice));
+        if(localStorage.getItem('token'))
+          {
+      await dispatch(addtocart(id, quantity,selectedIngredients,totalPrice));}
       navigate(`/cart/${id}?qty=${quantity}`);
     }
   };

@@ -23,13 +23,17 @@ const getallOrdersControllers = expressAsyncHandler(async (req, res) => {
             if(order.isDelivered==='Delivered') 
                 {order.deliveredAt= new Date();}
             const updatedOrder = await order.save();
+            const orders =await Order.find();
+            await exportorderstoexcel(orders);
             res.json(updatedOrder);
         } else {
             res.status(404).json({ message: 'Order not found' });
         }
     } catch (error) {
+     console.log(error);
         res.status(400).json({ message: 'Error updating order', error: error.message });
     }
+
 });
 
  module.exports={getallOrdersControllers,updateorderControllers}

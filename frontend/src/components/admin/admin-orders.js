@@ -54,14 +54,14 @@ const AdminOrders = () => {
 
     return (
         <div className="container relative mx-auto p-4">
-             { user.isAdmin && (
+             { (user.isAdmin||user.isEmployee) && (
       <a
     href="/datafiles/orders.xlsx"
     class="no-underline text-white px-4 py-2 w-fit absolute right-4 top-0  rounded-lg bg-blue-500 hover:bg-blue-600"
     download="ordersdata"
     aria-label="Download orders data" 
   >
-    Download orders data
+   <FontAwesomeIcon icon={faArrowDown}/> Download orders data
   </a>
     )}
             {localOrders.map((order) => (

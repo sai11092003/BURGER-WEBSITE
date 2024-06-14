@@ -18,9 +18,8 @@ function IngredientFormModal({ title, icon,id,nam ,pric }) {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(title==='')
+    if(title==='EDIT')
         {
-            console.log('clicked')
             dispatch(updateingredient({id, name, price }, navigate, handleClose))
         }
     else if (title==='CREATE INGREDIENT'&&name && price) {
