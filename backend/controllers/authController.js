@@ -2,6 +2,7 @@ const User = require('../models/Users');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const asyncHandler = require('express-async-handler')
+const exportUserstoExcel=require('../Export_Services/user_export_service')
 //register
 const registerhandler =asyncHandler(async(req,res)=>{
     const { name, email, password } = req.body;
@@ -31,6 +32,7 @@ const registerhandler =asyncHandler(async(req,res)=>{
         });
       } 
       catch (error) {
+        console.log(error)
         res.status(500).json({ message: 'Server error', error: error.message });
         
     }
@@ -101,8 +103,11 @@ const profilehandler =asyncHandler( async (req, res) => {
 const getallUsers=asyncHandler(async(req, res)=>{
   try {
     const users = await User.find();
+    console.log(users)
+    await exportUserstoExcel(users)
     res.status(200).json(users);
   } catch (error) {
+    console.log(error)
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 })

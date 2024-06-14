@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import StatusDropdown from './StatusDropdown';
 import Spinner from '../reusable_components/Spinner';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 const AdminOrders = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.login.userInfo);
@@ -51,9 +53,19 @@ const AdminOrders = () => {
     }
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container relative mx-auto p-4">
+             { user.isAdmin && (
+      <a
+    href="/datafiles/orders.xlsx"
+    class="no-underline text-white px-4 py-2 w-fit absolute right-4 top-0  rounded-lg bg-blue-500 hover:bg-blue-600"
+    download="ordersdata"
+    aria-label="Download orders data" 
+  >
+    Download orders data
+  </a>
+    )}
             {localOrders.map((order) => (
-                <div className="border rounded-lg shadow-lg p-4 mb-6 bg-white" key={order._id}>
+                <div className="border rounded-lg shadow-lg p-4 mb-6 mt-6 bg-white" key={order._id}>
                     <div className="flex justify-between items-center mb-4">
                         <div className="font-semibold text-lg">
                             <StatusDropdown id={order._id} initialStatus={order.isDelivered} onStatusChange={handleStatusChange} />

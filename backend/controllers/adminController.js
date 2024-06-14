@@ -1,11 +1,14 @@
 const expressAsyncHandler = require('express-async-handler');
 const Order = require('../models/Order');
+const exportorderstoexcel=require('../Export_Services/orders_export_service')
 const getallOrdersControllers = expressAsyncHandler(async (req, res) => {
     try {
         const orders = await Order.find();
        // throw new Error("No orders found");
-        res.json(orders);
+       exportorderstoexcel(orders); 
+       res.json(orders);
     } catch (error) {
+        console.log(error);
         res.status(400).json({ message: 'Error getting orders', error: error.message });
     }
  });

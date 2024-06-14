@@ -44,8 +44,8 @@ try {
     dispatch({ type: GET_ALL_ORDER_DETAILS_SUCCESS, payload: data });
     navigate('/admin-orders')
 } catch (error) {
-    localStorage.clear()
-    navigate('/signin')
+    //localStorage.clear()
+    //navigate('/signin')
     dispatch({
         type: GET_ALL_ORDER_DETAILS_FAILURE,
         payload: error.message

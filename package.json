@@ -27,6 +27,7 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.6",
     "postcss": "^8.4.38",
-    "postcss-safe-parser": "^7.0.0"
+    "postcss-safe-parser": "^7.0.0",
+    "xlsx": "^0.18.5"
   }
 }

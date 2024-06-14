@@ -3,23 +3,20 @@ dotenv.config()
 const express=require('express')
 const app=express();
 const initialIngredient=require('../frontend/src/logs/ingredients')
-
+const Burger=require('./logs/Burgers')
+const Burgers=require('./models/burgerSchema')
+const Users=require('./models/Users')
 const initialIngredients=require('./models/initialIngredients')
 const connectdb=require('./config/db')
 connectdb();
 const importdata=async()=>{
 try {
-    /*await Order.deleteMany()
-    await Users.deleteMany()
-    await Burgers.deleteMany()
-    const createdUsers=await Users.insertMany(users)
-    const adminUser=createdUsers[0]._id
-    const sampleBurgers=burger.map(burger=>({...burger,User:adminUser}))
+    const sampleBurgers=Burger.map(burger=>({...burger,User:'66633ef65bcc4a8fe8975da7'}))
+    console.log(sampleBurgers)
     await Burgers.insertMany(sampleBurgers)
-    console.log('data imported')*/
-    await initialIngredients.deleteMany()
-    await initialIngredients.insertMany(initialIngredient)
     console.log('data imported')
+   // await initialIngredients.insertMany(initialIngredient)
+    //console.log('data imported')
     process.exit()
 
 } catch (error) {
