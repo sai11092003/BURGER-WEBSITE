@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,12 +6,15 @@ import { faBurger, faHandPointRight } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import IngredientModal from './IngredientModal';
 import './AdminDropdownHeader.css'; // Import the custom CSS
-
-function AdminDropdownHeader({ handleLogout }) {
+function AdminDropdownHeader() {
+  const [showDropdown, setShowDropdown] = useState(false);
   const { isAdmin, isEmployee } = useSelector((state) => state.login.userInfo);
 
   return (
-    <Dropdown align="end">
+    <Dropdown align="end"   
+    onMouseEnter={() => setShowDropdown(true)}
+    onMouseLeave={() => setShowDropdown(false)}
+    show={showDropdown}>
       <Dropdown.Toggle variant="dark" id="dropdown-basic" className="bg-dark text-white border-0 px-3 py-2">
         AdminControls
       </Dropdown.Toggle>
