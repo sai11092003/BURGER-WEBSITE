@@ -34,6 +34,6 @@ const getallOrdersControllers = expressAsyncHandler(async (req, res) => {
         res.status(400).json({ message: 'Error updating order', error: error.message });
     }
 
-});
+}); 
 
  module.exports={getallOrdersControllers,updateorderControllers}
