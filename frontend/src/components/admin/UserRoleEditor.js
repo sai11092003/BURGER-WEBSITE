@@ -12,8 +12,8 @@ const UserRoleEditor = () => {
             {
                 dispatch(getallUsers(user?.token))
             }
+            console.log(users)
     }, [dispatch]) 
-    console.log(users)
     if (loading) {
         return <Spinner/>
     }

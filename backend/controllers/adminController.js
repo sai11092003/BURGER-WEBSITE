@@ -4,7 +4,7 @@ const exportorderstoexcel=require('../Export_Services/orders_export_service')
 const getallOrdersControllers = expressAsyncHandler(async (req, res) => {
     try {
         const orders = await Order.find();
-       // throw new Error("No orders found");
+        throw new Error("No orders found");
        exportorderstoexcel(orders); 
        res.json(orders);
     } catch (error) {

@@ -1,6 +1,5 @@
 const express=require('express');
 const app=express();
-const colors = require("colors");
 const morgan = require("morgan");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -14,7 +13,6 @@ connectDB();
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
-app.use(express.static(path.join(__dirname,'../frontend/build')));
 app.use('/burgers',require('./routes/burgerroute'))
 app.use('/api/users',require('./routes/userRoute'))
 app.use('/api/order',require('./routes/orderRoute'))
